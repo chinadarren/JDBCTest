@@ -27,10 +27,13 @@ public class TestJDB {
     public static void main(String[] args) throws Exception{
         //测试数据库连接
         System.out.println(getConnection());
-        //取出数据
+        //Create Connection Entity
         Connection conn = getConnection();
+        //Create Statement Entity
         Statement stmt = conn.createStatement();
+        //通过Statemnet 执行SQL语句 返回给ResultSet
         ResultSet rs = stmt.executeQuery("select * from user");
+        //遍历ResultSet取出数据
         while (rs.next()){
             System.out.println(rs.getString("id"));
         }
