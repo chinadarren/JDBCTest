@@ -13,7 +13,6 @@ public class TestJDB {
     public static final String PASSWORD = "system";
 
     public static Connection getConnection() {
-
         try {
             new Driver();
             return DriverManager.getConnection(URL, USER, PASSWORD);
@@ -22,7 +21,6 @@ public class TestJDB {
         }
         return null;
     }
-
 //输出连接信息
     public static void main(String[] args) {
         ResultSet rs=null;
@@ -31,6 +29,7 @@ public class TestJDB {
         try {
             conn = getConnection();
             stmt = conn.createStatement();
+            //查询
             //通过Statemnet 执行SQL语句 返回给ResultSet
             rs = stmt.executeQuery("select * from user");
             //遍历ResultSet取出数据
@@ -39,7 +38,8 @@ public class TestJDB {
             }
         } catch (SQLException e){
             e.printStackTrace();
-        }finally {try {
+        }finally {
+            try {
             //关闭连接
             //不做判断会直接报SQLExeption
             if(rs != null){
@@ -51,11 +51,8 @@ public class TestJDB {
             if(conn != null){
             conn.close();
             conn = null;}
-
         }catch (SQLException e){
-            e.printStackTrace();
+            e.printStackTrace();}
         }
-        }
-
     }
 }
