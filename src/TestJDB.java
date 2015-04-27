@@ -24,22 +24,39 @@ public class TestJDB {
     }
 
 //输出连接信息
-    public static void main(String[] args) throws Exception{
-        //测试数据库连接
-        System.out.println(getConnection());
-        //Create Connection Entity
-        Connection conn = getConnection();
-        //Create Statement Entity
-        Statement stmt = conn.createStatement();
-        //通过Statemnet 执行SQL语句 返回给ResultSet
-        ResultSet rs = stmt.executeQuery("select * from user");
-        //遍历ResultSet取出数据
-        while (rs.next()){
-            System.out.println(rs.getString("id"));
+    public static void main(String[] args) {
+        ResultSet rs=null;
+        Statement stmt=null;
+        Connection conn=null;
+        try {
+            //测试数据库连接
+            System.out.println(getConnection());
+
+            conn = getConnection();
+
+           stmt = conn.createStatement();
+            //通过Statemnet 执行SQL语句 返回给ResultSet
+           rs = stmt.executeQuery("select * from user");
+            //遍历ResultSet取出数据
+            while (rs.next()) {
+                System.out.println(rs.getString("id"));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }finally {try {
+            //关闭连接
+            //不做判断会直接报SQLExeption
+            if(rs != null){
+            rs.close();}
+            if(stmt != null){
+            stmt.close();}
+            if(conn != null){
+            conn.close();}
+
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        //关闭连接
-        rs.close();
-        stmt.close();
-        conn.close();
+        }
+
     }
 }
