@@ -50,5 +50,4 @@ public class TestJDB {
     public static void main(String[] args) {
         System.out.println(getConnection());
     }
-
 }
