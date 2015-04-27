@@ -1,7 +1,6 @@
-import java.sql.*;
 import com.mysql.jdbc.Driver;
 
-import javax.swing.plaf.nimbus.State;
+import java.sql.*;
 
 /**
  * Created by lei.chen on 4/27/2015.
