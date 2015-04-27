@@ -4,6 +4,8 @@ import java.sql.*;
 
 /**
  * Created by lei.chen on 4/27/2015.
+ *
+ * JDBC
  */
 //数据库连接
 public class TestJDB {

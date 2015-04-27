@@ -3,6 +3,8 @@ import com.mysql.jdbc.Driver;
 
 /**
 * Created by lei.chen on 4/27/2015.
+ *
+ * Statement
 */
 public class TestDML {
 
