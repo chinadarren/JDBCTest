@@ -29,14 +29,10 @@ public class TestJDB {
         Statement stmt=null;
         Connection conn=null;
         try {
-            //测试数据库连接
-            System.out.println(getConnection());
-
             conn = getConnection();
-
-           stmt = conn.createStatement();
+            stmt = conn.createStatement();
             //通过Statemnet 执行SQL语句 返回给ResultSet
-           rs = stmt.executeQuery("select * from user");
+            rs = stmt.executeQuery("select * from user");
             //遍历ResultSet取出数据
             while (rs.next()) {
                 System.out.println(rs.getString("id"));
@@ -47,11 +43,14 @@ public class TestJDB {
             //关闭连接
             //不做判断会直接报SQLExeption
             if(rs != null){
-            rs.close();}
+            rs.close();
+            rs = null;}
             if(stmt != null){
-            stmt.close();}
+            stmt.close();
+            stmt = null;}
             if(conn != null){
-            conn.close();}
+            conn.close();
+            conn = null;}
 
         }catch (SQLException e){
             e.printStackTrace();
